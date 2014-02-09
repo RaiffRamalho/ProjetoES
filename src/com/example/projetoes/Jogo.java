@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class Jogo extends Activity {
 
 	private int score = 0;
-	
+
 	private static final int PROGRESS = 0x1;
 
 	private int mProgressStatus = 0;
@@ -26,7 +26,7 @@ public class Jogo extends Activity {
 
 	final private int difficulty = 10;
 	private int[] buttonsValues = new int[6];
-	
+
 	private void completeButtonsValues() {
 		int cont = 0;
 		while (cont < buttonsValues.length) {
@@ -98,8 +98,9 @@ public class Jogo extends Activity {
 					mHandler.post(new Runnable() {
 						public void run() {
 							mProgressStatus++;
-							bar.incrementProgressBy(1);							
-//							if(mProgressStatus == 1800) buttonValue1.setText("");
+							bar.incrementProgressBy(1);
+							// if(mProgressStatus == 1800)
+							// buttonValue1.setText("");
 							;
 						}
 					});
@@ -120,28 +121,58 @@ public class Jogo extends Activity {
 
 		buttonOK.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				
-				final TextView pontuacao = (TextView) findViewById(R.id.textViewPontuacao);
-				score++;
-				pontuacao.setText("" + score);
-				buttonsValues = new int[6];
-				completeButtonsValues();
-				TextView campo1 = (TextView) findViewById(R.id.textView1);
-				TextView campo2 = (TextView) findViewById(R.id.textView2);
-				TextView campo3 = (TextView) findViewById(R.id.textView3);
-				campo1.setText("");
-				campo2.setText("");
-				campo3.setText("");
+				try {
+					final TextView value1 = (TextView) findViewById(R.id.textView1);
+					final TextView value2 = (TextView) findViewById(R.id.textView3);
+					final TextView operator = (TextView) findViewById(R.id.textView2);								
+					final TextView result = (TextView) findViewById(R.id.textView5);
+					
+					if(operator.getText().equals("")) throw new Exception();
+					
+					String a = (String) value1.getText(); 
+					String b = (String) value2.getText();
+					String c = (String) result.getText();
+					if (operator.getText().equals("+")) {
+						if(Integer.parseInt(a) + Integer.parseInt(b) == Integer.parseInt(c)){
+							score++;
+						}
+					} else if (operator.getText().equals("-")) {
+						if(Integer.parseInt(a) - Integer.parseInt(b) == Integer.parseInt(c)){
+							score++;
+						}
+					} else if (operator.getText().equals("*")) {
+						if(Integer.parseInt(a) * Integer.parseInt(b) == Integer.parseInt(c)){
+							score++;
+						}
+					} else {
+						if(Integer.parseInt(a) / Integer.parseInt(b) == Integer.parseInt(c)){
+							score++;
+						}
+					}
 
-				buttonValue1.setText("" + buttonsValues[0]);				
+					final TextView pontuacao = (TextView) findViewById(R.id.textViewPontuacao);				
+					pontuacao.setText("" + score);
+					buttonsValues = new int[6];
+					completeButtonsValues();
+					TextView campo1 = (TextView) findViewById(R.id.textView1);
+					TextView campo2 = (TextView) findViewById(R.id.textView2);
+					TextView campo3 = (TextView) findViewById(R.id.textView3);
+					campo1.setText("");
+					campo2.setText("");
+					campo3.setText("");
 
-				buttonValue2.setText("" + buttonsValues[1]);
-				buttonValue3.setText("" + buttonsValues[2]);
-				buttonValue4.setText("" + buttonsValues[3]);
-				buttonValue5.setText("" + buttonsValues[4]);
-				buttonValue6.setText("" + buttonsValues[5]);
+					buttonValue1.setText("" + buttonsValues[0]);
+
+					buttonValue2.setText("" + buttonsValues[1]);
+					buttonValue3.setText("" + buttonsValues[2]);
+					buttonValue4.setText("" + buttonsValues[3]);
+					buttonValue5.setText("" + buttonsValues[4]);
+					buttonValue6.setText("" + buttonsValues[5]);
+
+					campo5.setText("" + completeValue());
+				} catch (Exception e) {
+				}
 				
-				campo5.setText("" + completeValue());
 
 			}
 		});
@@ -154,12 +185,12 @@ public class Jogo extends Activity {
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText(buttonValue1.getText());
-//					buttonValue1.setText("");
-//					buttonValue1.setBackgroundColor(getTitleColor());
+					// buttonValue1.setText("");
+					// buttonValue1.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
 					campo2.setText(buttonValue1.getText());
-//					buttonValue1.setText("");
-//					buttonValue1.setBackgroundColor(getTitleColor());
+					// buttonValue1.setText("");
+					// buttonValue1.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
@@ -172,12 +203,12 @@ public class Jogo extends Activity {
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText(buttonValue2.getText());
-//					buttonValue2.setText("");
-//					buttonValue2.setBackgroundColor(getTitleColor());
+					// buttonValue2.setText("");
+					// buttonValue2.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
 					campo2.setText(buttonValue2.getText());
-//					buttonValue2.setText("");
-//					buttonValue2.setBackgroundColor(getTitleColor());
+					// buttonValue2.setText("");
+					// buttonValue2.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
@@ -190,12 +221,12 @@ public class Jogo extends Activity {
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText(buttonValue3.getText());
-//					buttonValue3.setText("");
-//					buttonValue3.setBackgroundColor(getTitleColor());
+					// buttonValue3.setText("");
+					// buttonValue3.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
 					campo2.setText(buttonValue3.getText());
-//					buttonValue3.setText("");
-//					buttonValue3.setBackgroundColor(getTitleColor());
+					// buttonValue3.setText("");
+					// buttonValue3.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
@@ -208,12 +239,12 @@ public class Jogo extends Activity {
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText(buttonValue4.getText());
-//					buttonValue4.setText("");
-//					buttonValue4.setBackgroundColor(getTitleColor());
+					// buttonValue4.setText("");
+					// buttonValue4.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
 					campo2.setText(buttonValue4.getText());
-//					buttonValue4.setText("");
-//					buttonValue4.setBackgroundColor(getTitleColor());
+					// buttonValue4.setText("");
+					// buttonValue4.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
@@ -226,12 +257,12 @@ public class Jogo extends Activity {
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText(buttonValue5.getText());
-//					buttonValue5.setText("");
-//					buttonValue5.setBackgroundColor(getTitleColor());
+					// buttonValue5.setText("");
+					// buttonValue5.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
 					campo2.setText(buttonValue5.getText());
-//					buttonValue5.setText("");
-//					buttonValue5.setBackgroundColor(getTitleColor());
+					// buttonValue5.setText("");
+					// buttonValue5.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
@@ -244,12 +275,12 @@ public class Jogo extends Activity {
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText(buttonValue6.getText());
-//					buttonValue6.setText("");
-//					buttonValue6.setBackgroundColor(getTitleColor());
+					// buttonValue6.setText("");
+					// buttonValue6.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
 					campo2.setText(buttonValue6.getText());
-//					buttonValue6.setText("");
-//					buttonValue6.setBackgroundColor(getTitleColor());
+					// buttonValue6.setText("");
+					// buttonValue6.setBackgroundColor(getTitleColor());
 				}
 			}
 		});

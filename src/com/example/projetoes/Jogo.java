@@ -91,7 +91,7 @@ public class Jogo extends Activity {
 			public void run() {
 				while (mProgressStatus < 3600) {
 					try {
-						Thread.sleep(10);
+						Thread.sleep(20);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

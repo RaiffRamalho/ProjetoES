@@ -44,7 +44,7 @@ public final class R {
         public static final int buttonValue4=0x7f090011;
         public static final int buttonValue5=0x7f090012;
         public static final int buttonValue6=0x7f090013;
-        public static final int progressBar =0x7f090019;
+        public static final int pbBarra=0x7f090019;
         public static final int tableRow1=0x7f09000c;
         public static final int tableRow2=0x7f090010;
         public static final int tableRow3=0x7f090004;

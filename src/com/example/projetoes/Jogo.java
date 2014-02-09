@@ -7,22 +7,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class Jogo extends Activity {
+public class Jogo extends Activity implements Runnable, OnClickListener {
+
+	private Handler baseTime = new Handler();// Cria um objeto do tipo Handler
+												// para base de tempo
+	private Button btProgress;
+	private ProgressBar pbBarra;
+	int progressCount;
 
 	private int score = 0;
-
-	private static final int PROGRESS = 0x1;
-
-	private int mProgressStatus = 0;
-	private int teste = 0;
-
-	private Handler mHandler = new Handler();
-	private Handler mHandler2 = new Handler();
 
 	final private int difficulty = 10;
 	private int[] buttonsValues = new int[6];
@@ -61,9 +60,33 @@ public class Jogo extends Activity {
 	}
 
 	@Override
+	public void run() {
+
+		if (progressCount <= 100) {
+			pbBarra.setProgress(progressCount);
+
+		} else {
+			progressCount = 0;
+			this.finish();
+		}
+
+		baseTime.postDelayed(this, 100);
+		progressCount++;
+
+	}// Fim de run()
+
+	public void onClick(View v) {
+		run();// Chama o método run();
+	}
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.jogo);
+
+		pbBarra = (ProgressBar) findViewById(R.id.pbBarra);
+		baseTime.post(this);
+		progressCount = 0;
 
 		final Button buttonBack = (Button) findViewById(R.id.buttonBack);
 		final Button buttonValue1 = (Button) findViewById(R.id.buttonValue1);
@@ -85,32 +108,32 @@ public class Jogo extends Activity {
 		final TextView campo5 = (TextView) findViewById(R.id.textView5);
 		campo5.setText("" + this.completeValue());
 
-		final ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
+//		final ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
 
-		new Thread(new Runnable() {
-			public void run() {
-				while (mProgressStatus < 3600) {
-					try {
-						Thread.sleep(20);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					mHandler.post(new Runnable() {
-						public void run() {
-							mProgressStatus++;
-							bar.incrementProgressBy(1);
-							// if(mProgressStatus == 1800)
-							// buttonValue1.setText("");
-							;
-						}
-					});
-				}
-
-				View v = new View(getApplicationContext());
-				Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-				startActivityForResult(myIntent, 0);
-			}
-		}).start();
+		// new Thread(new Runnable() {
+		// public void run() {
+		// while (mProgressStatus < 3600) {
+		// try {
+		// Thread.sleep(10);
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// }
+		// mHandler.post(new Runnable() {
+		// public void run() {
+		// mProgressStatus++;
+		// bar.incrementProgressBy(1);
+		// // if(mProgressStatus == 1800)
+		// // buttonValue1.setText("");
+		// ;
+		// }
+		// });
+		// }
+		//
+		// View v = new View(getApplicationContext());
+		// Intent myIntent = new Intent(v.getContext(), MainActivity.class);
+		// startActivityForResult(myIntent, 0);
+		// }
+		// }).start();
 
 		buttonBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -124,33 +147,38 @@ public class Jogo extends Activity {
 				try {
 					final TextView value1 = (TextView) findViewById(R.id.textView1);
 					final TextView value2 = (TextView) findViewById(R.id.textView3);
-					final TextView operator = (TextView) findViewById(R.id.textView2);								
+					final TextView operator = (TextView) findViewById(R.id.textView2);
 					final TextView result = (TextView) findViewById(R.id.textView5);
-					
-					if(operator.getText().equals("")) throw new Exception();
-					
-					String a = (String) value1.getText(); 
+
+					if (operator.getText().equals(""))
+						throw new Exception();
+
+					String a = (String) value1.getText();
 					String b = (String) value2.getText();
 					String c = (String) result.getText();
 					if (operator.getText().equals("+")) {
-						if(Integer.parseInt(a) + Integer.parseInt(b) == Integer.parseInt(c)){
+						if (Integer.parseInt(a) + Integer.parseInt(b) == Integer
+								.parseInt(c)) {
 							score++;
 						}
 					} else if (operator.getText().equals("-")) {
-						if(Integer.parseInt(a) - Integer.parseInt(b) == Integer.parseInt(c)){
+						if (Integer.parseInt(a) - Integer.parseInt(b) == Integer
+								.parseInt(c)) {
 							score++;
 						}
 					} else if (operator.getText().equals("*")) {
-						if(Integer.parseInt(a) * Integer.parseInt(b) == Integer.parseInt(c)){
+						if (Integer.parseInt(a) * Integer.parseInt(b) == Integer
+								.parseInt(c)) {
 							score++;
 						}
 					} else {
-						if(Integer.parseInt(a) / Integer.parseInt(b) == Integer.parseInt(c)){
+						if (Integer.parseInt(a) / Integer.parseInt(b) == Integer
+								.parseInt(c)) {
 							score++;
 						}
 					}
 
-					final TextView pontuacao = (TextView) findViewById(R.id.textViewPontuacao);				
+					final TextView pontuacao = (TextView) findViewById(R.id.textViewPontuacao);
 					pontuacao.setText("" + score);
 					buttonsValues = new int[6];
 					completeButtonsValues();
@@ -172,7 +200,6 @@ public class Jogo extends Activity {
 					campo5.setText("" + completeValue());
 				} catch (Exception e) {
 				}
-				
 
 			}
 		});

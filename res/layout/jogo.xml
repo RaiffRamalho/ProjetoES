@@ -181,15 +181,34 @@
     </TableLayout>
 
 
-         <ProgressBar
-             android:id="@+id/progressBar	"
-             style="?android:attr/progressBarStyleHorizontal"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:max="3600" />
+<!--          <ProgressBar -->
+<!--              android:id="@+id/progressBar	" -->
+<!--              style="?android:attr/progressBarStyleHorizontal" -->
+<!--              android:layout_width="match_parent" -->
+<!--              android:layout_height="wrap_content" -->
+<!--              android:max="3600" /> -->
 
 
+     <ProgressBar
+        android:id="@+id/pbBarra"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dip"
+        android:layout_height="40dip"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:max="100"/>
      
+<!--      <Button -->
+<!--         android:id="@+id/btProgress" -->
+<!--         android:layout_width="300dip" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_centerHorizontal="true" -->
+<!--         android:layout_centerVertical="true" -->
+<!--         android:text="Acionar ProgressBar" -->
+<!--         android:layout_gravity="center" -->
+<!--         android:layout_marginTop="20dip" -->
+<!--         android:textSize="20dip" -->
+<!--         /> -->
 
          <TextView
              android:id="@+id/Pontuacao"
@@ -209,6 +228,7 @@
              android:ems="10"
              android:text="0"
              android:textSize="20dp" />
+         
      
 
 </LinearLayout>

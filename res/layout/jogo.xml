@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:layout_gravity="center"
+    android:background="@drawable/back"
     android:orientation="vertical" >
 
     <Button
@@ -67,24 +68,6 @@
                 android:ems="10"
                 android:textSize="40dp" />
         </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
     </TableLayout>
 
     <TableLayout
@@ -98,137 +81,123 @@
 
             <Button
                 android:id="@+id/buttonValue1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorButtons"
-                android:text="10" />
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:layout_marginLeft="10dip"
+                android:text="" />
 
             <Button
                 android:id="@+id/buttonValue2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:layout_marginLeft="15dip"
                 android:background="@color/colorButtons"
-                android:text="Button" />
+                android:text="" />
 
             <Button
                 android:id="@+id/buttonValue3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:layout_marginLeft="15dip"
                 android:background="@color/colorButtons"
-                android:text="Button" />
+                android:text="" />
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dip" >
 
             <Button
                 android:id="@+id/buttonValue4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:layout_marginLeft="10dip"
                 android:background="@color/colorButtons"
-                android:text="Button" />
+                android:text="" />
 
             <Button
                 android:id="@+id/buttonValue5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:layout_marginLeft="15dip"
                 android:background="@color/colorButtons"
-                android:text="Button" />
+                android:text="" />
 
             <Button
                 android:id="@+id/buttonValue6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:layout_marginLeft="15dip"
                 android:background="@color/colorButtons"
-                android:text="Button" />
+                android:text="" />
         </TableRow>
-
-        <TableRow>
-
-            <Button
-                android:id="@+id/buttonSum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-            <Button
-                android:id="@+id/buttonLess"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-" />
-
-            <Button
-                android:id="@+id/buttonMultiplication"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="*" />
-
-            <Button
-                android:id="@+id/buttonDivision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="/" />
-
-            <Button
-                android:id="@+id/buttonOK"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OK" />
-        </TableRow>
-
     </TableLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayoutBotoes"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal" >
 
-<!--          <ProgressBar -->
-<!--              android:id="@+id/progressBar	" -->
-<!--              style="?android:attr/progressBarStyleHorizontal" -->
-<!--              android:layout_width="match_parent" -->
-<!--              android:layout_height="wrap_content" -->
-<!--              android:max="3600" /> -->
+        <Button
+            android:id="@+id/buttonSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+" />
 
+        <Button
+            android:id="@+id/buttonLess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
 
-     <ProgressBar
+        <Button
+            android:id="@+id/buttonMultiplication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*" />
+
+        <Button
+            android:id="@+id/buttonDivision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/" />
+
+        <Button
+            android:id="@+id/buttonOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK" />
+    </LinearLayout>
+
+    <ProgressBar
         android:id="@+id/pbBarra"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="300dip"
-        android:layout_height="40dip"
-        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
-        android:max="100"/>
-     
-<!--      <Button -->
-<!--         android:id="@+id/btProgress" -->
-<!--         android:layout_width="300dip" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_centerHorizontal="true" -->
-<!--         android:layout_centerVertical="true" -->
-<!--         android:text="Acionar ProgressBar" -->
-<!--         android:layout_gravity="center" -->
-<!--         android:layout_marginTop="20dip" -->
-<!--         android:textSize="20dip" -->
-<!--         /> -->
+        android:layout_marginTop="10dp"
+        android:max="100" />
 
-         <TextView
-             android:id="@+id/Pontuacao"
-             android:layout_width="200dp"
-             android:layout_height="50dp"
-             android:layout_marginTop="18dp"
-             android:ems="10"
-             android:text="Pontuação: "
-             android:textSize="20dp" />
+    <TextView
+        android:id="@+id/Pontuacao"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:text="Pontuação: "
+        android:textSize="20dp" />
 
-         <TextView
-             android:id="@+id/textViewPontuacao"
-             android:layout_width="50dp"
-             android:layout_height="50dp"
-             android:layout_marginTop="-18dp"
-             android:layout_marginLeft="35dp"
-             android:ems="10"
-             android:text="0"
-             android:textSize="20dp" />
-         
-     
+    <TextView
+        android:id="@+id/textViewPontuacao"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:text="0"
+        android:textSize="20dp" />
 
 </LinearLayout>

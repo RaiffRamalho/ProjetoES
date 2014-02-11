@@ -17,7 +17,6 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 
 	private Handler baseTime = new Handler();// Cria um objeto do tipo Handler
 												// para base de tempo
-	private Button btProgress;
 	private ProgressBar pbBarra;
 	int progressCount;
 
@@ -28,6 +27,12 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 
 	private void completeButtonsValues() {
 		int cont = 0;
+
+		// int[] a = new int[10];
+		// for (int i = 0; i < 10; i++) {
+		// a[i] = i + 1;
+		// }
+
 		while (cont < buttonsValues.length) {
 			int value = 1 + (int) (Math.random() * difficulty);
 			boolean temp = true;
@@ -76,7 +81,32 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 	}// Fim de run()
 
 	public void onClick(View v) {
-		run();// Chama o método run();
+		run();
+	}
+
+	private void setImageButton(final Button bt, int value) {
+
+		if (value == 1) {
+			bt.setBackgroundResource(R.drawable.num1);
+		} else if (value == 2) {
+			bt.setBackgroundResource(R.drawable.num2);
+		} else if (value == 3) {
+			bt.setBackgroundResource(R.drawable.num3);
+		} else if (value == 4) {
+			bt.setBackgroundResource(R.drawable.num4);
+		} else if (value == 5) {
+			bt.setBackgroundResource(R.drawable.num5);
+		} else if (value == 6) {
+			bt.setBackgroundResource(R.drawable.num6);
+		} else if (value == 7) {
+			bt.setBackgroundResource(R.drawable.num7);
+		} else if (value == 8) {
+			bt.setBackgroundResource(R.drawable.num8);
+		} else if (value == 9) {
+			bt.setBackgroundResource(R.drawable.num9);
+		} else if (value == 10) {
+			bt.setBackgroundResource(R.drawable.num10);
+		}
 	}
 
 	@Override
@@ -107,33 +137,6 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 
 		final TextView campo5 = (TextView) findViewById(R.id.textView5);
 		campo5.setText("" + this.completeValue());
-
-//		final ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
-
-		// new Thread(new Runnable() {
-		// public void run() {
-		// while (mProgressStatus < 3600) {
-		// try {
-		// Thread.sleep(10);
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// }
-		// mHandler.post(new Runnable() {
-		// public void run() {
-		// mProgressStatus++;
-		// bar.incrementProgressBy(1);
-		// // if(mProgressStatus == 1800)
-		// // buttonValue1.setText("");
-		// ;
-		// }
-		// });
-		// }
-		//
-		// View v = new View(getApplicationContext());
-		// Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-		// startActivityForResult(myIntent, 0);
-		// }
-		// }).start();
 
 		buttonBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -189,13 +192,18 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 					campo2.setText("");
 					campo3.setText("");
 
-					buttonValue1.setText("" + buttonsValues[0]);
-
-					buttonValue2.setText("" + buttonsValues[1]);
-					buttonValue3.setText("" + buttonsValues[2]);
-					buttonValue4.setText("" + buttonsValues[3]);
-					buttonValue5.setText("" + buttonsValues[4]);
-					buttonValue6.setText("" + buttonsValues[5]);
+					// buttonValue1.setText("" + buttonsValues[0]);
+					// buttonValue2.setText("" + buttonsValues[1]);
+					// buttonValue3.setText("" + buttonsValues[2]);
+					// buttonValue4.setText("" + buttonsValues[3]);
+					// buttonValue5.setText("" + buttonsValues[4]);
+					// buttonValue6.setText("" + buttonsValues[5]);
+					setImageButton(buttonValue1, buttonsValues[0]);
+					setImageButton(buttonValue2, buttonsValues[1]);
+					setImageButton(buttonValue3, buttonsValues[2]);
+					setImageButton(buttonValue4, buttonsValues[3]);
+					setImageButton(buttonValue5, buttonsValues[4]);
+					setImageButton(buttonValue6, buttonsValues[5]);
 
 					campo5.setText("" + completeValue());
 				} catch (Exception e) {
@@ -204,108 +212,126 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			}
 		});
 
-		buttonValue1.setText("" + buttonsValues[0]);
+		// buttonValue1.setText("" + buttonsValues[0]);
+		setImageButton(buttonValue1, buttonsValues[0]);
 		buttonValue1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textView1);
 				TextView campo2 = (TextView) findViewById(R.id.textView3);
 
 				if (campo1.getText().toString().equals("")) {
-					campo1.setText(buttonValue1.getText());
+					campo1.setText("" + buttonsValues[0]);
+					buttonValue1.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue1.setText("");
 					// buttonValue1.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
-					campo2.setText(buttonValue1.getText());
+					campo2.setText("" + buttonsValues[0]);
+					buttonValue1.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue1.setText("");
 					// buttonValue1.setBackgroundColor(getTitleColor());
-				}
+				} 
 			}
 		});
 
-		buttonValue2.setText("" + buttonsValues[1]);
+		// buttonValue2.setText("" + buttonsValues[1]);
+		setImageButton(buttonValue2, buttonsValues[1]);
 		buttonValue2.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textView1);
 				TextView campo2 = (TextView) findViewById(R.id.textView3);
 
 				if (campo1.getText().toString().equals("")) {
-					campo1.setText(buttonValue2.getText());
+					campo1.setText("" + buttonsValues[1]);
+					buttonValue2.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue2.setText("");
 					// buttonValue2.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
-					campo2.setText(buttonValue2.getText());
+					campo2.setText("" + buttonsValues[1]);
+					buttonValue2.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue2.setText("");
 					// buttonValue2.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
 
-		buttonValue3.setText("" + buttonsValues[2]);
+		// buttonValue3.setText("" + buttonsValues[2]);
+		setImageButton(buttonValue3, buttonsValues[2]);
 		buttonValue3.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textView1);
 				TextView campo2 = (TextView) findViewById(R.id.textView3);
 
 				if (campo1.getText().toString().equals("")) {
-					campo1.setText(buttonValue3.getText());
+					campo1.setText("" + buttonsValues[2]);
+					buttonValue3.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue3.setText("");
 					// buttonValue3.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
-					campo2.setText(buttonValue3.getText());
+					campo2.setText("" + buttonsValues[2]);
+					buttonValue3.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue3.setText("");
 					// buttonValue3.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
 
-		buttonValue4.setText("" + buttonsValues[3]);
+		// buttonValue4.setText("" + buttonsValues[3]);
+		setImageButton(buttonValue4, buttonsValues[3]);
 		buttonValue4.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textView1);
 				TextView campo2 = (TextView) findViewById(R.id.textView3);
 
 				if (campo1.getText().toString().equals("")) {
-					campo1.setText(buttonValue4.getText());
+					campo1.setText("" + buttonsValues[3]);
+					buttonValue4.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue4.setText("");
 					// buttonValue4.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
-					campo2.setText(buttonValue4.getText());
+					campo2.setText("" + buttonsValues[3]);
+					buttonValue4.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue4.setText("");
 					// buttonValue4.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
 
-		buttonValue5.setText("" + buttonsValues[4]);
+		// buttonValue5.setText("" + buttonsValues[4]);
+		setImageButton(buttonValue5, buttonsValues[4]);
 		buttonValue5.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textView1);
 				TextView campo2 = (TextView) findViewById(R.id.textView3);
 
 				if (campo1.getText().toString().equals("")) {
-					campo1.setText(buttonValue5.getText());
+					campo1.setText("" + buttonsValues[4]);
+					buttonValue5.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue5.setText("");
 					// buttonValue5.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
-					campo2.setText(buttonValue5.getText());
+					campo2.setText("" + buttonsValues[4]);
+					buttonValue5.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue5.setText("");
 					// buttonValue5.setBackgroundColor(getTitleColor());
 				}
 			}
 		});
 
-		buttonValue6.setText("" + buttonsValues[5]);
+		// buttonValue6.setText("" + buttonsValues[5]);
+		setImageButton(buttonValue6, buttonsValues[5]);
 		buttonValue6.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textView1);
 				TextView campo2 = (TextView) findViewById(R.id.textView3);
 
 				if (campo1.getText().toString().equals("")) {
-					campo1.setText(buttonValue6.getText());
+					campo1.setText("" + buttonsValues[5]);
+					buttonValue6.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue6.setText("");
 					// buttonValue6.setBackgroundColor(getTitleColor());
 				} else if (campo2.getText().toString().equals("")) {
-					campo2.setText(buttonValue6.getText());
+					campo2.setText("" + buttonsValues[5]);
+					buttonValue6.setBackgroundResource(R.drawable.defaultop);
 					// buttonValue6.setText("");
 					// buttonValue6.setBackgroundColor(getTitleColor());
 				}

@@ -118,6 +118,9 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 		baseTime.post(this);
 		progressCount = 0;
 
+		final TextView pontuacao = (TextView) findViewById(R.id.Pontuacao);
+		pontuacao.setBackgroundResource(R.drawable.score);
+		
 		final Button buttonBack = (Button) findViewById(R.id.buttonBack);
 		final Button buttonValue0 = (Button) findViewById(R.id.buttonValue0);
 		final Button buttonValue1 = (Button) findViewById(R.id.buttonValue1);
@@ -127,11 +130,19 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 		final Button buttonValue5 = (Button) findViewById(R.id.buttonValue5);
 
 		final Button buttonSum = (Button) findViewById(R.id.buttonSum);
-		final Button buttonLess = (Button) findViewById(R.id.buttonLess);
+		buttonSum.setBackgroundResource(R.drawable.sum);
+		
+		final Button buttonSubt = (Button) findViewById(R.id.buttonSubt);
+		buttonSubt.setBackgroundResource(R.drawable.subt);
+		
 		final Button buttonMultiplication = (Button) findViewById(R.id.buttonMultiplication);
+		buttonMultiplication.setBackgroundResource(R.drawable.mult);
+		
 		final Button buttonDivision = (Button) findViewById(R.id.buttonDivision);
+		buttonDivision.setBackgroundResource(R.drawable.div);
 
 		final Button buttonOK = (Button) findViewById(R.id.buttonOK);
+		buttonOK.setBackgroundResource(R.drawable.icon_go);
 
 		this.completeButtonsValues();
 
@@ -169,7 +180,7 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 								.parseInt(c)) {
 							score++;
 						}
-					} else if (operator.getText().equals("*")) {
+					} else if (operator.getText().equals("x")) {
 						if (Integer.parseInt(a) * Integer.parseInt(b) == Integer
 								.parseInt(c)) {
 							score++;
@@ -377,28 +388,28 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 		buttonSum.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo = (TextView) findViewById(R.id.textView2);
-				campo.setText(buttonSum.getText());
+				campo.setText("+");
 			}
 		});
 
-		buttonLess.setOnClickListener(new View.OnClickListener() {
+		buttonSubt.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo = (TextView) findViewById(R.id.textView2);
-				campo.setText(buttonLess.getText());
+				campo.setText("-");
 			}
 		});
 
 		buttonMultiplication.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo = (TextView) findViewById(R.id.textView2);
-				campo.setText(buttonMultiplication.getText());
+				campo.setText("x");
 			}
 		});
 
 		buttonDivision.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo = (TextView) findViewById(R.id.textView2);
-				campo.setText(buttonDivision.getText());
+				campo.setText("÷");
 			}
 		});
 

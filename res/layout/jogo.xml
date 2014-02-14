@@ -145,31 +145,31 @@
             android:id="@+id/buttonSum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+" />
+            android:text="" />
 
         <Button
-            android:id="@+id/buttonLess"
+            android:id="@+id/buttonSubt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-" />
+            android:text="" />
 
         <Button
             android:id="@+id/buttonMultiplication"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*" />
+            android:text="" />
 
         <Button
             android:id="@+id/buttonDivision"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="/" />
+            android:text="" />
 
         <Button
             android:id="@+id/buttonOK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK" />
+            android:text="" />
     </LinearLayout>
 
     <ProgressBar
@@ -187,7 +187,6 @@
         android:layout_height="50dp"
         android:ems="10"
         android:gravity="center_horizontal"
-        android:text="Pontuação: "
         android:textSize="20dp" />
 
     <TextView

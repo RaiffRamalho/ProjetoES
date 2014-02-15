@@ -8,21 +8,15 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class Jogo extends Activity {
 
 	private int score = 0;
-
-	private static final int PROGRESS = 0x1;
-
 	private int mProgressStatus = 0;
-	private int teste = 0;
 
 	private Handler mHandler = new Handler();
-	private Handler mHandler2 = new Handler();
 
 	final private int difficulty = 10;
 	private int[] buttonsValues = new int[6];
@@ -173,7 +167,6 @@ public class Jogo extends Activity {
 				} catch (Exception e) {
 				}
 				
-
 			}
 		});
 

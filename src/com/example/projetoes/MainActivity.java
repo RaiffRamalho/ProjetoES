@@ -9,12 +9,13 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-	//xxx
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//Este botão troca a tela e inicia a tela de jogo.
 		final Button button = (Button) findViewById(R.id.buttonStart);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -15,11 +15,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//Este botão troca a tela e inicia a tela de jogo.
+		//Este botï¿½o troca a tela e inicia a tela de jogo.
 		final Button button = (Button) findViewById(R.id.buttonStart);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	Intent myIntent = new Intent(v.getContext(), Jogo.class);
+            	Intent myIntent = new Intent(v.getContext(), JogoActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });

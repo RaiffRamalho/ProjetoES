@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class Jogo extends Activity implements Runnable, OnClickListener {
+public class JogoActivity extends Activity implements Runnable, OnClickListener {
 
 
 	private Handler baseTime = new Handler();// Cria um objeto do tipo Handler
@@ -27,11 +27,6 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 
 	private void completeButtonsValues() {
 		int cont = 0;
-
-		// int[] a = new int[10];
-		// for (int i = 0; i < 10; i++) {
-		// a[i] = i + 1;
-		// }
 
 		while (cont < buttonsValues.length) {
 			int value = 1 + (int) (Math.random() * difficulty);
@@ -67,7 +62,7 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 	@Override
 	public void run() {
 
-		if (progressCount <= 100) {
+		if (progressCount <= 600) {
 			pbBarra.setProgress(progressCount);
 
 		} else {
@@ -75,10 +70,10 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			this.finish();
 		}
 
-		baseTime.postDelayed(this, 100);
+		baseTime.postDelayed(this, 600);
 		progressCount++;
 
-	}// Fim de run()
+	}
 
 	public void onClick(View v) {
 		run();
@@ -112,7 +107,7 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.jogo);
+		setContentView(R.layout.activity_jogo);
 
 		pbBarra = (ProgressBar) findViewById(R.id.pbBarra);
 		baseTime.post(this);
@@ -146,7 +141,7 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 
 		this.completeButtonsValues();
 
-		final TextView campo5 = (TextView) findViewById(R.id.textView5);
+		final TextView campo5 = (TextView) findViewById(R.id.textViewResult);
 		campo5.setText("" + this.completeValue());
 
 		buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -159,10 +154,10 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 		buttonOK.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				try {
-					final TextView value1 = (TextView) findViewById(R.id.textView1);
-					final TextView value2 = (TextView) findViewById(R.id.textView3);
-					final TextView operator = (TextView) findViewById(R.id.textView2);
-					final TextView result = (TextView) findViewById(R.id.textView5);
+					final TextView value1 = (TextView) findViewById(R.id.textViewOperador1);
+					final TextView value2 = (TextView) findViewById(R.id.textViewOperador2);
+					final TextView operator = (TextView) findViewById(R.id.textViewOperando);
+					final TextView result = (TextView) findViewById(R.id.textViewResult);
 
 					if (operator.getText().equals(""))
 						throw new Exception();
@@ -196,19 +191,10 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 					pontuacao.setText("" + score);
 					buttonsValues = new int[6];
 					completeButtonsValues();
-					TextView campo1 = (TextView) findViewById(R.id.textView1);
-					TextView campo2 = (TextView) findViewById(R.id.textView2);
-					TextView campo3 = (TextView) findViewById(R.id.textView3);
-					campo1.setText("");
-					campo2.setText("");
-					campo3.setText("");
+					value1.setText("");
+					value2.setText("");
+					operator.setText("");
 
-					// buttonValue1.setText("" + buttonsValues[0]);
-					// buttonValue2.setText("" + buttonsValues[1]);
-					// buttonValue3.setText("" + buttonsValues[2]);
-					// buttonValue4.setText("" + buttonsValues[3]);
-					// buttonValue5.setText("" + buttonsValues[4]);
-					// buttonValue6.setText("" + buttonsValues[5]);
 					setImageButton(buttonValue0, buttonsValues[0]);
 					setImageButton(buttonValue1, buttonsValues[1]);
 					setImageButton(buttonValue2, buttonsValues[2]);
@@ -222,26 +208,21 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			}
 		});
 
-		// buttonValue1.setText("" + buttonsValues[0]);
 		setImageButton(buttonValue0, buttonsValues[0]);
 		buttonValue0.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo1 = (TextView) findViewById(R.id.textView1);
-				TextView campo2 = (TextView) findViewById(R.id.textView3);
+				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
+				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[0]);
 					buttonValue0.setBackgroundResource(R.drawable.defaultop);
-					// buttonValue1.setText("");
-					// buttonValue1.setBackgroundColor(getTitleColor());
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[0]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[0]);
 							buttonValue0
 									.setBackgroundResource(R.drawable.defaultop);
-							// buttonValue2.setText("");
-							// buttonValue2.setBackgroundColor(getTitleColor());
 						}
 					}
 				
@@ -249,26 +230,21 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			}
 		});
 
-		// buttonValue2.setText("" + buttonsValues[1]);
 		setImageButton(buttonValue1, buttonsValues[1]);
 		buttonValue1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo1 = (TextView) findViewById(R.id.textView1);
-				TextView campo2 = (TextView) findViewById(R.id.textView3);
+				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
+				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
 				
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[1]);
 					buttonValue1.setBackgroundResource(R.drawable.defaultop);
-					// buttonValue2.setText("");
-					// buttonValue2.setBackgroundColor(getTitleColor());
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[1]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[1]);
 							buttonValue1
 									.setBackgroundResource(R.drawable.defaultop);
-							// buttonValue2.setText("");
-							// buttonValue2.setBackgroundColor(getTitleColor());
 						}
 					}
 				
@@ -276,26 +252,21 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			}
 		});
 
-		// buttonValue3.setText("" + buttonsValues[2]);
 		setImageButton(buttonValue2, buttonsValues[2]);
 		buttonValue2.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo1 = (TextView) findViewById(R.id.textView1);
-				TextView campo2 = (TextView) findViewById(R.id.textView3);
+				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
+				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[2]);
 					buttonValue2.setBackgroundResource(R.drawable.defaultop);
-					// buttonValue3.setText("");
-					// buttonValue3.setBackgroundColor(getTitleColor());
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[2]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[2]);
 							buttonValue2
 									.setBackgroundResource(R.drawable.defaultop);
-							// buttonValue2.setText("");
-							// buttonValue2.setBackgroundColor(getTitleColor());
 						}
 					}
 				
@@ -303,26 +274,21 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			}
 		});
 
-		// buttonValue4.setText("" + buttonsValues[3]);
 		setImageButton(buttonValue3, buttonsValues[3]);
 		buttonValue3.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo1 = (TextView) findViewById(R.id.textView1);
-				TextView campo2 = (TextView) findViewById(R.id.textView3);
+				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
+				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[3]);
 					buttonValue3.setBackgroundResource(R.drawable.defaultop);
-					// buttonValue4.setText("");
-					// buttonValue4.setBackgroundColor(getTitleColor());
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[3]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[3]);
 							buttonValue3
 									.setBackgroundResource(R.drawable.defaultop);
-							// buttonValue2.setText("");
-							// buttonValue2.setBackgroundColor(getTitleColor());
 						}
 					}
 				
@@ -330,26 +296,21 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			}
 		});
 
-		// buttonValue5.setText("" + buttonsValues[4]);
 		setImageButton(buttonValue4, buttonsValues[4]);
 		buttonValue4.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo1 = (TextView) findViewById(R.id.textView1);
-				TextView campo2 = (TextView) findViewById(R.id.textView3);
+				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
+				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[4]);
 					buttonValue4.setBackgroundResource(R.drawable.defaultop);
-					// buttonValue5.setText("");
-					// buttonValue5.setBackgroundColor(getTitleColor());
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[4]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[4]);
 							buttonValue4
 									.setBackgroundResource(R.drawable.defaultop);
-							// buttonValue2.setText("");
-							// buttonValue2.setBackgroundColor(getTitleColor());
 						}
 					}
 				
@@ -357,26 +318,21 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 			}
 		});
 
-		// buttonValue6.setText("" + buttonsValues[5]);
 		setImageButton(buttonValue5, buttonsValues[5]);
 		buttonValue5.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo1 = (TextView) findViewById(R.id.textView1);
-				TextView campo2 = (TextView) findViewById(R.id.textView3);
+				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
+				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[5]);
 					buttonValue5.setBackgroundResource(R.drawable.defaultop);
-					// buttonValue6.setText("");
-					// buttonValue6.setBackgroundColor(getTitleColor());
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[5]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[1]);
 							buttonValue5
 									.setBackgroundResource(R.drawable.defaultop);
-							// buttonValue2.setText("");
-							// buttonValue2.setBackgroundColor(getTitleColor());
 						}
 					}
 				
@@ -386,29 +342,29 @@ public class Jogo extends Activity implements Runnable, OnClickListener {
 
 		buttonSum.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo = (TextView) findViewById(R.id.textView2);
+				TextView campo = (TextView) findViewById(R.id.textViewOperando);
 				campo.setText("+");
 			}
 		});
 
 		buttonSubt.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo = (TextView) findViewById(R.id.textView2);
+				TextView campo = (TextView) findViewById(R.id.textViewOperando);
 				campo.setText("-");
 			}
 		});
 
 		buttonMultiplication.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo = (TextView) findViewById(R.id.textView2);
+				TextView campo = (TextView) findViewById(R.id.textViewOperando);
 				campo.setText("x");
 			}
 		});
 
 		buttonDivision.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				TextView campo = (TextView) findViewById(R.id.textView2);
-				campo.setText("÷");
+				TextView campo = (TextView) findViewById(R.id.textViewOperando);
+				campo.setText("ï¿½");
 			}
 		});
 

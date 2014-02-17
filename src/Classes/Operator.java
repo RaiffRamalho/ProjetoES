@@ -1,7 +1,5 @@
 package Classes;
 
-import java.util.HashMap;
-
 public class Operator {
 
 	private int result;

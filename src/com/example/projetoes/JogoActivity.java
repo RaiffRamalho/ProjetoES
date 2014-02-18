@@ -141,8 +141,8 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 
 		this.completeButtonsValues();
 
-		final TextView campo5 = (TextView) findViewById(R.id.textViewResult);
-		campo5.setText("" + this.completeValue());
+		final TextView result = (TextView) findViewById(R.id.textViewResult);
+		result.setText("" + this.completeValue());
 
 		buttonBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -157,7 +157,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					final TextView value1 = (TextView) findViewById(R.id.textViewOperador1);
 					final TextView value2 = (TextView) findViewById(R.id.textViewOperador2);
 					final TextView operator = (TextView) findViewById(R.id.textViewOperando);
-					final TextView result = (TextView) findViewById(R.id.textViewResult);
+					
 
 					if (operator.getText().equals(""))
 						throw new Exception();
@@ -170,17 +170,17 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 								.parseInt(c)) {
 							score++;
 						}
-					} else if (operator.getText().equals("-")) {
+					} if (operator.getText().equals("-")) {
 						if (Integer.parseInt(a) - Integer.parseInt(b) == Integer
 								.parseInt(c)) {
 							score++;
 						}
-					} else if (operator.getText().equals("x")) {
+					} if (operator.getText().equals("x")) {
 						if (Integer.parseInt(a) * Integer.parseInt(b) == Integer
 								.parseInt(c)) {
 							score++;
 						}
-					} else {
+					} if(operator.getText().equals("÷")){
 						if (Integer.parseInt(a) / Integer.parseInt(b) == Integer
 								.parseInt(c)) {
 							score++;
@@ -188,12 +188,13 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					}
 
 					final TextView pontuacao = (TextView) findViewById(R.id.textViewPontuacao);
-					pontuacao.setText("" + score);
+					pontuacao.setText(score);
 					buttonsValues = new int[6];
 					completeButtonsValues();
 					value1.setText("");
 					value2.setText("");
 					operator.setText("");
+					
 
 					setImageButton(buttonValue0, buttonsValues[0]);
 					setImageButton(buttonValue1, buttonsValues[1]);
@@ -202,9 +203,8 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					setImageButton(buttonValue4, buttonsValues[4]);
 					setImageButton(buttonValue5, buttonsValues[5]);
 
-					campo5.setText("" + completeValue());
-				} catch (Exception e) {
-				}
+					result.setText("" + completeValue());
+				} catch (Exception e) {}
 			}
 		});
 
@@ -364,7 +364,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		buttonDivision.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView campo = (TextView) findViewById(R.id.textViewOperando);
-				campo.setText("�");
+				campo.setText("÷");
 			}
 		});
 

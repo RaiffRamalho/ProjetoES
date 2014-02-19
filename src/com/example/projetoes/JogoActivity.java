@@ -157,14 +157,14 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					final TextView value1 = (TextView) findViewById(R.id.textViewOperador1);
 					final TextView value2 = (TextView) findViewById(R.id.textViewOperador2);
 					final TextView operator = (TextView) findViewById(R.id.textViewOperando);
+					final TextView resultado = (TextView) findViewById(R.id.textViewResult);
 					
-
 					if (operator.getText().equals(""))
 						throw new Exception();
 
 					String a = (String) value1.getText();
 					String b = (String) value2.getText();
-					String c = (String) result.getText();
+					String c = (String) resultado.getText();
 					if (operator.getText().equals("+")) {
 						if (Integer.parseInt(a) + Integer.parseInt(b) == Integer
 								.parseInt(c)) {
@@ -188,7 +188,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					}
 
 					final TextView pontuacao = (TextView) findViewById(R.id.textViewPontuacao);
-					pontuacao.setText(score);
+					pontuacao.setText(Integer.toString(score));
 					buttonsValues = new int[6];
 					completeButtonsValues();
 					value1.setText("");
@@ -202,8 +202,8 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					setImageButton(buttonValue3, buttonsValues[3]);
 					setImageButton(buttonValue4, buttonsValues[4]);
 					setImageButton(buttonValue5, buttonsValues[5]);
-
-					result.setText("" + completeValue());
+					resultado.setText("" + completeValue());
+					//result.setText(Integer.toString(completeValue()));
 				} catch (Exception e) {}
 			}
 		});

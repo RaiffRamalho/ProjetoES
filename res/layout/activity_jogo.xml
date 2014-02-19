@@ -66,6 +66,13 @@
                 android:layout_marginTop="18dp"
                 android:ems="10"
                 android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/Hidebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hide Numbers" />
+
         </TableRow>
     </TableLayout>
 

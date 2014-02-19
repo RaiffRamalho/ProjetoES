@@ -13,7 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class JogoActivity extends Activity implements Runnable, OnClickListener {
-
+	
+	private boolean hide = false;
 
 	private Handler baseTime = new Handler();// Cria um objeto do tipo Handler
 												// para base de tempo
@@ -25,6 +26,8 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 	final private int difficulty = 10;
 	private int[] buttonsValues = new int[6];
 
+	/*est emétodo gera os valores para aparecer nos botões
+	de acordo com a dificuldade setada acima*/
 	private void completeButtonsValues() {
 		int cont = 0;
 
@@ -46,6 +49,9 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		}
 	}
 
+	
+	/*este método escolhe o dois números da lista e cria uma operação
+	esta operação será usada para a pontuação*/
 	private int completeValue() {
 		int value1 = (int) (Math.random() * 6);
 		int value2 = (int) (Math.random() * 6);
@@ -59,19 +65,26 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		return op.getResult();
 	}
 
+	
+	/*run do progess bar*/
 	@Override
 	public void run() {
+		
+		if(hide){
 
-		if (progressCount <= 600) {
-			pbBarra.setProgress(progressCount);
-
-		} else {
-			progressCount = 0;
-			this.finish();
+			if (progressCount <= 600) {
+				pbBarra.setProgress(progressCount);
+	
+			} else {
+				progressCount = 0;
+				this.finish();
+				hide=false;
+			}
+	
+			baseTime.postDelayed(this, 600);
+			progressCount++;
+		
 		}
-
-		baseTime.postDelayed(this, 600);
-		progressCount++;
 
 	}
 
@@ -79,6 +92,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		run();
 	}
 
+	/*este método coloca as imagens nos botões*/
 	private void setImageButton(final Button bt, int value) {
 
 		if (value == 1) {
@@ -116,6 +130,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		final TextView pontuacao = (TextView) findViewById(R.id.Pontuacao);
 		pontuacao.setBackgroundResource(R.drawable.score);
 		
+		final Button buttonHide = (Button) findViewById(R.id.Hidebutton);
 		final Button buttonBack = (Button) findViewById(R.id.buttonBack);
 		final Button buttonValue0 = (Button) findViewById(R.id.buttonValue0);
 		final Button buttonValue1 = (Button) findViewById(R.id.buttonValue1);
@@ -142,12 +157,34 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		this.completeButtonsValues();
 
 		final TextView result = (TextView) findViewById(R.id.textViewResult);
-		result.setText("" + this.completeValue());
+		/*result.setText("" + this.completeValue());*/
 
 		buttonBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(v.getContext(), MainActivity.class);
 				startActivityForResult(myIntent, 0);
+			}
+		});
+		
+		buttonHide.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				hide = true;
+				run();
+				result.setText("" + completeValue());
+				buttonValue0
+				.setBackgroundResource(R.drawable.defaultop);
+				buttonValue1
+				.setBackgroundResource(R.drawable.defaultop);
+				buttonValue2
+				.setBackgroundResource(R.drawable.defaultop);
+				buttonValue3
+				.setBackgroundResource(R.drawable.defaultop);
+				buttonValue4
+				.setBackgroundResource(R.drawable.defaultop);
+				buttonValue5
+				.setBackgroundResource(R.drawable.defaultop);
+				
+				
 			}
 		});
 
@@ -194,6 +231,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					value1.setText("");
 					value2.setText("");
 					operator.setText("");
+					resultado.setText("");
 					
 
 					setImageButton(buttonValue0, buttonsValues[0]);
@@ -202,8 +240,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					setImageButton(buttonValue3, buttonsValues[3]);
 					setImageButton(buttonValue4, buttonsValues[4]);
 					setImageButton(buttonValue5, buttonsValues[5]);
-					resultado.setText("" + completeValue());
-					//result.setText(Integer.toString(completeValue()));
+					/*resultado.setText("" + completeValue());*/
 				} catch (Exception e) {}
 			}
 		});
@@ -216,17 +253,18 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[0]);
-					buttonValue0.setBackgroundResource(R.drawable.defaultop);
+					//buttonValue0.setBackgroundResource(R.drawable.defaultop);
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[0]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[0]);
-							buttonValue0
-									.setBackgroundResource(R.drawable.defaultop);
+							/*buttonValue0
+									.setBackgroundResource(R.drawable.defaultop);*/
 						}
 					}
 				
 				}
+				setImageButton(buttonValue0, buttonsValues[0]);
 			}
 		});
 
@@ -238,17 +276,18 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[1]);
-					buttonValue1.setBackgroundResource(R.drawable.defaultop);
+					//buttonValue1.setBackgroundResource(R.drawable.defaultop);
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[1]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[1]);
-							buttonValue1
-									.setBackgroundResource(R.drawable.defaultop);
+							/*buttonValue1
+									.setBackgroundResource(R.drawable.defaultop);*/
 						}
 					}
 				
 				}
+				setImageButton(buttonValue1, buttonsValues[1]);
 			}
 		});
 
@@ -260,17 +299,17 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[2]);
-					buttonValue2.setBackgroundResource(R.drawable.defaultop);
+					/*buttonValue2.setBackgroundResource(R.drawable.defaultop);*/
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[2]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[2]);
-							buttonValue2
-									.setBackgroundResource(R.drawable.defaultop);
+							/*buttonValue2
+									.setBackgroundResource(R.drawable.defaultop);*/
 						}
 					}
-				
 				}
+				setImageButton(buttonValue2, buttonsValues[2]);
 			}
 		});
 
@@ -282,17 +321,17 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[3]);
-					buttonValue3.setBackgroundResource(R.drawable.defaultop);
+					//buttonValue3.setBackgroundResource(R.drawable.defaultop);
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[3]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[3]);
-							buttonValue3
-									.setBackgroundResource(R.drawable.defaultop);
+							/*buttonValue3
+									.setBackgroundResource(R.drawable.defaultop);*/
 						}
 					}
-				
 				}
+				setImageButton(buttonValue3, buttonsValues[3]);
 			}
 		});
 
@@ -304,17 +343,17 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[4]);
-					buttonValue4.setBackgroundResource(R.drawable.defaultop);
+					//buttonValue4.setBackgroundResource(R.drawable.defaultop);
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[4]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[4]);
-							buttonValue4
-									.setBackgroundResource(R.drawable.defaultop);
+							/*buttonValue4
+									.setBackgroundResource(R.drawable.defaultop);*/
 						}
 					}
-				
 				}
+				setImageButton(buttonValue4, buttonsValues[4]);
 			}
 		});
 
@@ -326,17 +365,17 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 
 				if (campo1.getText().toString().equals("")) {
 					campo1.setText("" + buttonsValues[5]);
-					buttonValue5.setBackgroundResource(R.drawable.defaultop);
+					//buttonValue5.setBackgroundResource(R.drawable.defaultop);
 				}else {
 					if(Integer.parseInt((String)campo1.getText()) != buttonsValues[5]){
 						if (campo2.getText().toString().equals("")) {
 							campo2.setText("" + buttonsValues[1]);
-							buttonValue5
-									.setBackgroundResource(R.drawable.defaultop);
+							/*buttonValue5
+									.setBackgroundResource(R.drawable.defaultop);*/
 						}
 					}
-				
 				}
+				setImageButton(buttonValue5, buttonsValues[5]);
 			}
 		});
 

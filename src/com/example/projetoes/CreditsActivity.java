@@ -7,32 +7,22 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class CreditsActivity extends Activity {
 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_credits);
 		
 		//Este botao troca a tela e inicia a tela de jogo.
-		final Button buttonStart = (Button) findViewById(R.id.buttonStart);
-		buttonStart.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(), JogoActivity.class);
-				startActivityForResult(myIntent, 0);
-			}
-		});
-		
-		
-		final Button buttonCredits = (Button) findViewById(R.id.buttonCredits);		
-		buttonCredits.setOnClickListener(new View.OnClickListener() {
+		final Button buttonBackMain = (Button) findViewById(R.id.buttonBackMain);
+        buttonBackMain.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	Intent myIntent = new Intent(v.getContext(), CreditsActivity.class);
+            	Intent myIntent = new Intent(v.getContext(), MainActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
-		
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package com.example.projetoes;
 
 import Classes.Operator;
+import Classes.Persistencia;
+import Classes.Ranking;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +23,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 													// para base de tempo
 	private ProgressBar pbBarra;
 	int progressCount;
-
+	
 	private int score = 0;
 
 	final private int difficulty = 10;

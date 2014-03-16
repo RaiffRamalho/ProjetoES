@@ -123,8 +123,6 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		pbBarra = (ProgressBar) findViewById(R.id.pbBarra);
 		baseTime.post(this);
 		progressCount = 0;
-
-		final TextView pontuacao = (TextView) findViewById(R.id.textViewPontuacao);	
 		
 
 		final Button buttonHide = (Button) findViewById(R.id.Hidebutton);

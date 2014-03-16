@@ -24,6 +24,13 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		final Button buttonRanking = (Button) findViewById(R.id.buttonRanking);		
+		buttonRanking.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	Intent myIntent = new Intent(v.getContext(), RankingActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
 		
 		final Button buttonCredits = (Button) findViewById(R.id.buttonCredits);		
 		buttonCredits.setOnClickListener(new View.OnClickListener() {

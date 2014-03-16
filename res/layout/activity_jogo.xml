@@ -10,6 +10,7 @@
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="Back" />
 
     <TableLayout
@@ -72,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hide Numbers"
+                android:textStyle="bold"
                 android:textSize="12px" />
         </TableRow>
     </TableLayout>

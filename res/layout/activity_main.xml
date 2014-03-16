@@ -10,30 +10,32 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/buttonCredits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ButtonRecord"
-        android:layout_below="@+id/ButtonRecord"
-        android:layout_marginTop="52dp"
-        android:text="Credits" />
-
-    <Button
         android:id="@+id/buttonStart"
-        android:layout_width="wrap_content"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonRanking"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="108dp"
-        android:text="Start" />
+        android:layout_marginTop="84dp"
+        android:text="Start"
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/ButtonRecord"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonRanking"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonStart"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp"
-        android:text="Record" />
+        android:layout_centerVertical="true"
+        android:text="Ranking"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonCredits"
+        android:layout_width="200px"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonRanking"
+        android:layout_below="@+id/buttonRanking"
+        android:layout_marginTop="58dp"
+        android:text="Credits"
+        android:textStyle="bold" />
 
 </RelativeLayout>

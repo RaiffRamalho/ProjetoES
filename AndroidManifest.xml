@@ -35,6 +35,11 @@
             android:noHistory = "true"
             android:screenOrientation="portrait" >           
         </activity>
+        <activity
+            android:name="com.example.projetoes.RankingActivity"
+            android:noHistory = "true"
+            android:screenOrientation="portrait" >           
+        </activity>
     </application>
 
 </manifest>

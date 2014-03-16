@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/math_background"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/buttonBackMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonBackMain"
+        android:layout_marginTop="56dp"
+        android:layout_toRightOf="@+id/buttonBackMain"
+        android:ems="10"
+        android:textStyle="bold"
+        android:text="1º " />
+
+    <TextView
+        android:id="@+id/EditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EditText01"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:textStyle="bold"
+        android:text="2º " />
+
+    <TextView
+        android:id="@+id/EditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EditText01"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:textStyle="bold"
+        android:text="3º " />
+
+    <TextView
+        android:id="@+id/EditText01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EditText02"
+        android:layout_below="@+id/EditText3"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:textStyle="bold"
+        android:text="4º " />
+
+    <TextView
+        android:id="@+id/EditText02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/EditText01"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:textStyle="bold"
+        android:text="5º " />
+
+    <TextView
+        android:id="@+id/Ranking1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:layout_marginLeft="34dp"
+        android:ems="10"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/Ranking2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Ranking1"
+        android:layout_below="@+id/EditText2"
+        android:ems="10"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/Ranking3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Ranking2"
+        android:layout_below="@+id/EditText3"
+        android:ems="10"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/Ranking4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Ranking3"
+        android:layout_below="@+id/EditText01"
+        android:ems="10"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/Ranking5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Ranking4"
+        android:layout_below="@+id/EditText02"
+        android:ems="10"
+        android:text="" />
+
+</RelativeLayout>

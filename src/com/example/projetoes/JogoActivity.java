@@ -26,6 +26,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 	
 	private int score = 0;
 
+	private Ranking ranking;
 	final private int difficulty = 10;
 	private int[] buttonsValues = new int[6];
 
@@ -80,8 +81,9 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				progressCount++;
 			} else {
 				progressCount = 0;
-				this.finish();
 				hide = false;
+				this.finish();
+				startActivity(new Intent(getApplicationContext(), InsertUserActivity.class));
 			}
 			baseTime.postDelayed(this, 100);
 		}

@@ -16,7 +16,6 @@
         android:layout_alignLeft="@+id/buttonRanking"
         android:layout_alignParentTop="true"
         android:layout_marginTop="84dp"
-        android:text="Start"
         android:textStyle="bold" />
 
     <Button
@@ -25,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Ranking"
         android:textStyle="bold" />
 
     <Button

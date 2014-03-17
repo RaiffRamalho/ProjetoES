@@ -26,4 +26,11 @@ public class Ranking implements Serializable {
 			this.ranking.remove(this.ranking.last());
 		}
 	}
+	
+	public boolean CheckValue(Integer value){
+		for (Gamer g: this.ranking) {
+			if(g.getScore() < value) return true;
+		}
+		return false;
+	}
 }

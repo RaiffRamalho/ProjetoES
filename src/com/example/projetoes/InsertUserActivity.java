@@ -1,4 +1,4 @@
-	package com.example.projetoes;
+package com.example.projetoes;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,22 +7,22 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-public class RankingActivity extends Activity {
+public class InsertUserActivity extends Activity {
 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_ranking);
+		setContentView(R.layout.activity_insert_user);
 		
 		//Este botao troca a tela e inicia a tela de jogo.
-		final Button buttonBackMain = (Button) findViewById(R.id.buttonBackMain);
-        buttonBackMain.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-                startActivityForResult(myIntent, 0);
-            }
-        });
+		final Button buttonOk = (Button) findViewById(R.id.buttonConfirmUser);
+		buttonOk.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(), RankingActivity.class);
+				startActivityForResult(myIntent, 0);
+			}
+		});
 	}
 
 	@Override

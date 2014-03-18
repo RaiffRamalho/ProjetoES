@@ -145,10 +145,6 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
         if(bunble!=null){
             //Getting the value stored in the name "NAME"
             jogador = bunble.getString("NameUser");
-
-            //appending the value to the contents of textView1.
-            final Button buttondialog = (Button) findViewById(R.id.buttonDialog);
-            buttondialog.setText(jogador+" aqui");
         }
 
 		

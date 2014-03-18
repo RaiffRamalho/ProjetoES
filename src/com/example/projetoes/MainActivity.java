@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 		});
 
 		final Button buttonCredits = (Button) findViewById(R.id.buttonCredits);
-		buttonRanking.setBackgroundResource(R.drawable.menu_credits_button);
+		buttonCredits.setBackgroundResource(R.drawable.menu_credits_button);
 		buttonCredits.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(v.getContext(),

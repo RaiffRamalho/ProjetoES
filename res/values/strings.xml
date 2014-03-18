@@ -4,8 +4,6 @@
 	<color name="background">#E0E0E0</color>
 	<color name="black">#4C4C4C</color>
 	<color name="white">#FFF</color>
-    <string name="app_name">ProjetoES</string>
+    <string name="app_name">Math and Memory</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
 </resources>

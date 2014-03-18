@@ -1,9 +1,11 @@
 package com.example.projetoes;
-
+import Classes.Gamer;
 import Classes.Operator;
 import Classes.Persistencia;
 import Classes.Ranking;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +17,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class JogoActivity extends Activity implements Runnable, OnClickListener {
-
+	
+	final Context context = this;
+	private  String jogador;
 	private boolean hide = false;
 
 	final private Handler baseTime = new Handler();// Cria um objeto do tipo
@@ -26,7 +30,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 	
 	private int score = 0;
 
-	private Ranking ranking;
+	private Ranking ranking = new Ranking();
 	final private int difficulty = 10;
 	private int[] buttonsValues = new int[6];
 
@@ -83,7 +87,15 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				progressCount = 0;
 				hide = false;
 				this.finish();
-				startActivity(new Intent(getApplicationContext(), InsertUserActivity.class));
+				if(ranking.CheckRanking(jogador, score)){
+					Intent myIntent = new Intent(context, RankingActivity.class);
+					myIntent.putExtra("GamersList", ranking.toString());
+					startActivity(myIntent);
+					
+				}else{
+					startActivity(new Intent(getApplicationContext(), MainActivity.class));
+				
+				}
 			}
 			baseTime.postDelayed(this, 100);
 		}
@@ -128,7 +140,10 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		baseTime.post(this);
 		progressCount = 0;
 		
-
+		Intent sender=getIntent();
+        jogador = sender.getExtras().getString("NomeUser");
+		
+		
 		final Button buttonHide = (Button) findViewById(R.id.Hidebutton);
 		final Button buttonBack = (Button) findViewById(R.id.buttonBack);
 		final Button buttonValue0 = (Button) findViewById(R.id.buttonValue0);

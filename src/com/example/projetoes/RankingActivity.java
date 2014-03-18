@@ -6,14 +6,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class RankingActivity extends Activity {
 
-	
+	private String Rank;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ranking);
+		
+		Intent sender=getIntent();
+		Rank = sender.getExtras().getString("GamerList");
+		final TextView rankList = (TextView) findViewById(R.id.editTextRank);
+		rankList.setText(Rank);
+		
+		
 		
 		//Este botao troca a tela e inicia a tela de jogo.
 		final Button buttonBackMain = (Button) findViewById(R.id.buttonBackMain);

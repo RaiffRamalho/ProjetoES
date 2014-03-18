@@ -1,6 +1,6 @@
 package Classes;
 
-class Gamer implements Comparable<Gamer> {  
+public class Gamer implements Comparable<Gamer> {  
     private String name;  
     private int score;  
   

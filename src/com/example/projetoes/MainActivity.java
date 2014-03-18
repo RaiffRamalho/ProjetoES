@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
 		buttonStart.setBackgroundResource(R.drawable.menu_start_button);
 		buttonStart.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(), JogoActivity.class);
+				Intent myIntent = new Intent(v.getContext(), InsertUserActivity.class);
 				startActivityForResult(myIntent, 0);
 			}
 		});

@@ -94,24 +94,18 @@ public final class R {
         public static final int EditText02=0x7f090000;
         public static final int EditText03=0x7f090002;
         public static final int EditText04=0x7f090004;
-        public static final int EditText2=0x7f090023;
-        public static final int EditText3=0x7f090024;
         public static final int Hidebutton=0x7f09000f;
-        public static final int Ranking1=0x7f090025;
-        public static final int Ranking2=0x7f090026;
-        public static final int Ranking3=0x7f090027;
-        public static final int Ranking4=0x7f090028;
-        public static final int Ranking5=0x7f090029;
-        public static final int action_settings=0x7f09002a;
+        public static final int action_settings=0x7f090028;
         public static final int buttonBack=0x7f090008;
         public static final int buttonBackMain=0x7f090005;
         public static final int buttonConfirmUser=0x7f090006;
-        public static final int buttonCredits=0x7f090022;
+        public static final int buttonCredits=0x7f090023;
+        public static final int buttonDialog=0x7f090020;
         public static final int buttonDivision=0x7f09001c;
         public static final int buttonMultiplication=0x7f09001b;
         public static final int buttonOK=0x7f09001d;
-        public static final int buttonRanking=0x7f090021;
-        public static final int buttonStart=0x7f090020;
+        public static final int buttonRanking=0x7f090022;
+        public static final int buttonStart=0x7f090021;
         public static final int buttonSubt=0x7f09001a;
         public static final int buttonSum=0x7f090019;
         public static final int buttonValue0=0x7f090011;
@@ -120,7 +114,10 @@ public final class R {
         public static final int buttonValue3=0x7f090015;
         public static final int buttonValue4=0x7f090016;
         public static final int buttonValue5=0x7f090017;
+        public static final int dialogButtonOK=0x7f090026;
         public static final int editText1=0x7f090003;
+        public static final int editTextRank=0x7f090024;
+        public static final int image=0x7f090027;
         public static final int linearLayoutBotoes=0x7f090018;
         public static final int pbBarra=0x7f09001e;
         public static final int tableRow1=0x7f090010;
@@ -133,6 +130,7 @@ public final class R {
         public static final int textViewPontuacao=0x7f09001f;
         public static final int textViewResult=0x7f09000e;
         public static final int userName=0x7f090007;
+        public static final int username=0x7f090025;
     }
     public static final class layout {
         public static final int activity_credits=0x7f030000;
@@ -140,6 +138,7 @@ public final class R {
         public static final int activity_jogo=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_ranking=0x7f030004;
+        public static final int insertname=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f080000;

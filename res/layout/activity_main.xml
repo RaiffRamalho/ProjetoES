@@ -33,7 +33,6 @@
         android:layout_alignLeft="@+id/buttonRanking"
         android:layout_below="@+id/buttonRanking"
         android:layout_marginTop="58dp"
-        android:text="Credits"
         android:textStyle="bold" />
 
 </RelativeLayout>

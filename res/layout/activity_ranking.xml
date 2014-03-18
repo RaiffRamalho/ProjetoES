@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:textStyle="bold"
-        android:text="Back" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/editText1"

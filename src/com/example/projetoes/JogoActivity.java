@@ -130,7 +130,9 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		
 
 		final Button buttonHide = (Button) findViewById(R.id.Hidebutton);
+		buttonHide.setBackgroundResource(R.drawable.hide_numbers);
 		final Button buttonBack = (Button) findViewById(R.id.buttonBack);
+		buttonBack.setBackgroundResource(R.drawable.seta_back);
 		final Button buttonValue0 = (Button) findViewById(R.id.buttonValue0);
 		final Button buttonValue1 = (Button) findViewById(R.id.buttonValue1);
 		final Button buttonValue2 = (Button) findViewById(R.id.buttonValue2);
@@ -151,7 +153,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		buttonDivision.setBackgroundResource(R.drawable.div);
 
 		final Button buttonOK = (Button) findViewById(R.id.buttonOK);
-		buttonOK.setBackgroundResource(R.drawable.icon_go);
+		buttonOK.setBackgroundResource(R.drawable.button_go);
 
 		this.completeButtonsValues();
 

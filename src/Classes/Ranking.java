@@ -1,9 +1,9 @@
 package Classes;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 
 public class Ranking implements Serializable {
 
@@ -17,11 +17,10 @@ public class Ranking implements Serializable {
 		this.ranking = new ArrayList<Gamer>();
 	}
 
-	public void CheckRanking(String name, Integer score) {
-		Gamer gam = new Gamer(name, score);
-
-		this.ranking.add(gam);
+	public void addRanking(String name, Integer score) {
+		this.ranking.add(new Gamer(name, score));
 		Collections.sort(ranking);
-		if (this.ranking.size() > 5)this.ranking.remove(5);
+		if (this.ranking.size() > 5)
+			this.ranking.remove(5);
 	}
 }

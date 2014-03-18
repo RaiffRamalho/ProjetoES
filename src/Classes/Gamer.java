@@ -18,8 +18,12 @@ class Gamer implements Comparable<Gamer> {
         return score;  
     }  
   
-    public int compareTo(Gamer jog) {  
-        return jog.score - this.score;  
+    public int compareTo(Gamer jog) {
+    	int retorno =  jog.score - this.score;
+    	if(retorno == 0){
+    		return - 1;
+    	}
+        return retorno;  
     }
 
     public String toString(){

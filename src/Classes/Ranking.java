@@ -1,8 +1,9 @@
 package Classes;
-
 import java.io.Serializable;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 public class Ranking implements Serializable {
 
@@ -10,27 +11,17 @@ public class Ranking implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1495427580801884007L;
-	private SortedSet<Gamer> ranking;
+	private List<Gamer> ranking;
 
 	public Ranking() {
-		this.ranking = new TreeSet<Gamer>();
+		this.ranking = new ArrayList<Gamer>();
 	}
 
 	public void CheckRanking(String name, Integer score) {
 		Gamer gam = new Gamer(name, score);
-		if(this.ranking.contains(gam)){
-			this.ranking.remove(gam);
-		}
-		this.ranking.add(gam);			
-		if(this.ranking.size() > 5){
-			this.ranking.remove(this.ranking.last());
-		}
-	}
-	
-	public boolean CheckValue(Integer value){
-		for (Gamer g: this.ranking) {
-			if(g.getScore() < value) return true;
-		}
-		return false;
+
+		this.ranking.add(gam);
+		Collections.sort(ranking);
+		if (this.ranking.size() > 5)this.ranking.remove(5);
 	}
 }

@@ -1,9 +1,9 @@
 package Classes;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 
 public class Ranking implements Serializable {
 
@@ -26,6 +26,7 @@ public class Ranking implements Serializable {
 		this.ranking = new ArrayList<Gamer>();
 	}
 
+
 	public boolean CheckRanking(String name, Integer score) {
 		Gamer gam = new Gamer(name, score);
 		
@@ -42,5 +43,6 @@ public class Ranking implements Serializable {
 	
 	public List<Gamer> getRank(){
 		return ranking;
+
 	}
 }

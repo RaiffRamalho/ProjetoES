@@ -25,6 +25,7 @@ public class RankingActivity extends Activity {
 		
 		//Este botao troca a tela e inicia a tela de jogo.
 		final Button buttonBackMain = (Button) findViewById(R.id.buttonBackMain);
+		buttonBackMain.setBackgroundResource(R.drawable.seta_back);
         buttonBackMain.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent myIntent = new Intent(v.getContext(), MainActivity.class);

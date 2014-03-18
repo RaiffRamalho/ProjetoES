@@ -10,8 +10,7 @@
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Back" />
+        android:textStyle="bold" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -72,7 +71,6 @@
                 android:id="@+id/Hidebutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hide Numbers"
                 android:textStyle="bold"
                 android:textSize="12px" />
         </TableRow>

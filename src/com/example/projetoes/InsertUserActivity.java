@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class InsertUserActivity extends Activity {
 
+	EditText name;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +20,14 @@ public class InsertUserActivity extends Activity {
 		
 		//Este botao troca a tela e inicia a tela de jogo.
 		final Button buttonOk = (Button) findViewById(R.id.buttonConfirmUser);
-
+		name = (EditText) findViewById(R.id.userName);
 		buttonOk.setBackgroundResource(R.drawable.ok);
 
 		buttonOk.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(), JogoActivity.class);
-				TextView name = (TextView) findViewById(R.id.userName);
+				Intent myIntent = new Intent(InsertUserActivity.this, JogoActivity.class);
 
-				myIntent.putExtra("NomeUser", name.getText());
+				myIntent.putExtra("NameUser", name.getText().toString());
 				startActivity(myIntent);
 			}
 		});

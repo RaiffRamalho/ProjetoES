@@ -16,11 +16,15 @@ public class RankingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ranking);
 		
-		Intent sender=getIntent();
-		Rank = sender.getExtras().getString("GamerList");
 		final TextView rankList = (TextView) findViewById(R.id.editTextRank);
-		rankList.setText(Rank);
+		Bundle bunble=getIntent().getExtras();
 		
+
+        if(bunble!=null){
+
+            //appending the value to the contents of textView1.
+            rankList.setText(bunble.getString("GamersList"));
+        }
 		
 		
 		//Este botao troca a tela e inicia a tela de jogo.

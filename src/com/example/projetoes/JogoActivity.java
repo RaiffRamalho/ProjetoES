@@ -88,7 +88,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				hide = false;
 				this.finish();
 				if(ranking.CheckRanking(jogador, score)){
-					Intent myIntent = new Intent(context, RankingActivity.class);
+					Intent myIntent = new Intent(JogoActivity.this, RankingActivity.class);
 					myIntent.putExtra("GamersList", ranking.toString());
 					startActivity(myIntent);
 					
@@ -140,9 +140,17 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		baseTime.post(this);
 		progressCount = 0;
 		
-		Intent sender=getIntent();
-        jogador = sender.getExtras().getString("NomeUser");
-		
+        
+		Bundle bunble=getIntent().getExtras();	
+        if(bunble!=null){
+            //Getting the value stored in the name "NAME"
+            jogador = bunble.getString("NameUser");
+
+            //appending the value to the contents of textView1.
+            final Button buttondialog = (Button) findViewById(R.id.buttonDialog);
+            buttondialog.setText(jogador+" aqui");
+        }
+
 		
 		final Button buttonHide = (Button) findViewById(R.id.Hidebutton);
 		buttonHide.setBackgroundResource(R.drawable.hide_numbers);

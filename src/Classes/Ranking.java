@@ -17,7 +17,7 @@ public class Ranking implements Serializable {
 	public String toString() {
 		String saida = "";
 		for (int i = 0; i < ranking.size(); i++) {
-			saida+= i+"º" +" " +ranking.get(i).getName() +" "+ranking.get(i).getScore();
+			saida+= i+1+"º" +" - " +ranking.get(i).getName() +" - "+ranking.get(i).getScore();
 		}
 		return saida;
 	}

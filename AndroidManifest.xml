@@ -7,7 +7,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-
+	<instrumentation
+       android:name="android.test.InstrumentationTestRunner"
+       android:targetPackage="com.example.projetoes" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"

@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
-import Classes.Persistencia;
-import Classes.Ranking;
+import classes.Persistencia;
+import classes.Ranking;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,9 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-
+	
+	private Ranking ranking = new Ranking();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 
 public class Gamer implements Comparable<Gamer> {  
     private String name;  

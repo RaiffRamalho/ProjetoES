@@ -1,10 +1,7 @@
 package com.example.projetoes;
-import Classes.Gamer;
-import Classes.Operator;
-import Classes.Persistencia;
-import Classes.Ranking;
+import classes.Operator;
+import classes.Ranking;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,10 +27,11 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 	
 	private int score = 0;
 
-	private Ranking ranking = new Ranking();
 	final private int difficulty = 10;
 	private int[] buttonsValues = new int[6];
 
+	Ranking rank = Ranking.getInstance();
+	
 	/*
 	 * este metodo gera os valores para aparecer nos botoes de acordo com a
 	 * dificuldade setada acima
@@ -87,14 +85,12 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				progressCount = 0;
 				hide = false;
 				this.finish();
-				if(ranking.CheckRanking(jogador, score)){
+				if(rank.CheckRanking(jogador, score)){
 					Intent myIntent = new Intent(JogoActivity.this, RankingActivity.class);
-					myIntent.putExtra("GamersList", ranking.toString());
+					myIntent.putExtra("GamersList", rank.toString());
 					startActivity(myIntent);
-					
 				}else{
 					startActivity(new Intent(getApplicationContext(), MainActivity.class));
-				
 				}
 			}
 			baseTime.postDelayed(this, 100);
@@ -177,7 +173,6 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 		this.completeButtonsValues();
 
 		final TextView result = (TextView) findViewById(R.id.textViewResult);
-		/* result.setText("" + this.completeValue()); */
 
 		buttonBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -257,7 +252,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 					setImageButton(buttonValue3, buttonsValues[3]);
 					setImageButton(buttonValue4, buttonsValues[4]);
 					setImageButton(buttonValue5, buttonsValues[5]);
-					/* resultado.setText("" + completeValue()); */
+
 					hide = false;
 					pontuacao.setText(" Points: " + score);
 				} catch (Exception e) {
@@ -274,15 +269,10 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				if (hide) {
 					if (campo1.getText().toString().equals("")) {
 						campo1.setText("" + buttonsValues[0]);
-						// buttonValue0.setBackgroundResource(R.drawable.defaultop);
 					} else {
 						if (Integer.parseInt((String) campo1.getText()) != buttonsValues[0]) {
 							if (campo2.getText().toString().equals("")) {
 								campo2.setText("" + buttonsValues[0]);
-								/*
-								 * buttonValue0
-								 * .setBackgroundResource(R.drawable.defaultop);
-								 */
 							}
 						}
 
@@ -301,15 +291,10 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[1]);
-						// buttonValue1.setBackgroundResource(R.drawable.defaultop);
 					} else {
 						if (Integer.parseInt((String) campo1.getText()) != buttonsValues[1]) {
 							if (campo2.getText().toString().equals("") && hide) {
 								campo2.setText("" + buttonsValues[1]);
-								/*
-								 * buttonValue1
-								 * .setBackgroundResource(R.drawable.defaultop);
-								 */
 							}
 						}
 
@@ -328,18 +313,10 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[2]);
-						/*
-						 * buttonValue2.setBackgroundResource(R.drawable.defaultop
-						 * );
-						 */
 					} else {
 						if (Integer.parseInt((String) campo1.getText()) != buttonsValues[2]) {
 							if (campo2.getText().toString().equals("") && hide) {
 								campo2.setText("" + buttonsValues[2]);
-								/*
-								 * buttonValue2
-								 * .setBackgroundResource(R.drawable.defaultop);
-								 */
 							}
 						}
 					}
@@ -357,15 +334,10 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[3]);
-						// buttonValue3.setBackgroundResource(R.drawable.defaultop);
 					} else {
 						if (Integer.parseInt((String) campo1.getText()) != buttonsValues[3]) {
 							if (campo2.getText().toString().equals("") && hide) {
 								campo2.setText("" + buttonsValues[3]);
-								/*
-								 * buttonValue3
-								 * .setBackgroundResource(R.drawable.defaultop);
-								 */
 							}
 						}
 					}
@@ -383,15 +355,10 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[4]);
-						// buttonValue4.setBackgroundResource(R.drawable.defaultop);
 					} else {
 						if (Integer.parseInt((String) campo1.getText()) != buttonsValues[4]) {
 							if (campo2.getText().toString().equals("") && hide) {
 								campo2.setText("" + buttonsValues[4]);
-								/*
-								 * buttonValue4
-								 * .setBackgroundResource(R.drawable.defaultop);
-								 */
 							}
 						}
 					}
@@ -409,15 +376,10 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[5]);
-						// buttonValue5.setBackgroundResource(R.drawable.defaultop);
 					} else {
 						if (Integer.parseInt((String) campo1.getText()) != buttonsValues[5]) {
 							if (campo2.getText().toString().equals("") && hide) {
 								campo2.setText("" + buttonsValues[5]);
-								/*
-								 * buttonValue5
-								 * .setBackgroundResource(R.drawable.defaultop);
-								 */
 							}
 						}
 					}

@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,18 +12,17 @@ public class Ranking implements Serializable {
 	 */
 	private static final long serialVersionUID = 1495427580801884007L;
 	private List<Gamer> ranking;
-
-	@Override
-	public String toString() {
-		String saida = "";
-		for (int i = 0; i < ranking.size(); i++) {
-			saida+= i+1+"º" +" - " +ranking.get(i).getName() +" - "+ranking.get(i).getScore();
-		}
-		return saida;
-	}
-
+	private static Ranking instance = null;
+	
 	public Ranking() {
 		this.ranking = new ArrayList<Gamer>();
+	}
+	
+	public static Ranking getInstance() {
+	      if(instance == null) {
+	         instance = new Ranking();
+	      }
+	      return instance;
 	}
 
 
@@ -43,6 +42,14 @@ public class Ranking implements Serializable {
 	
 	public List<Gamer> getRank(){
 		return ranking;
-
+	}
+	
+	@Override
+	public String toString() {
+		String saida = "";
+		for (int i = 0; i < ranking.size(); i++) {
+			saida+= i+1+"º" +" - " +ranking.get(i).getName() +" - "+ranking.get(i).getScore()+"\n";
+		}
+		return saida;
 	}
 }

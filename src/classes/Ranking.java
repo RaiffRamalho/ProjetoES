@@ -13,42 +13,38 @@ public class Ranking implements Serializable {
 	private static final long serialVersionUID = 1495427580801884007L;
 	private List<Gamer> ranking;
 	private static Ranking instance = null;
-	
+
 	public Ranking() {
 		this.ranking = new ArrayList<Gamer>();
 	}
-	
+
 	public static Ranking getInstance() {
-	      if(instance == null) {
-	         instance = new Ranking();
-	      }
-	      return instance;
-	}
-
-
-	public boolean CheckRanking(String name, Integer score) {
-		Gamer gam = new Gamer(name, score);
-		
-		this.ranking.add(gam);
-		if(ranking.size()<5) return true;
-		Collections.sort(ranking);
-		if (this.ranking.size() > 5){
-			this.ranking.remove(5);
-			return true;
+		if (instance == null) {
+			instance = new Ranking();
 		}
-		return false;
-		
+		return instance;
 	}
-	
-	public List<Gamer> getRank(){
+
+	public void CheckRanking(String name, Integer score) {
+		Gamer gam = new Gamer(name, score);
+
+		this.ranking.add(gam);
+		Collections.sort(ranking);
+		if (ranking.size() >= 5) {
+			this.ranking.remove(5);
+		}
+	}
+
+	public List<Gamer> getRank() {
 		return ranking;
 	}
-	
+
 	@Override
 	public String toString() {
 		String saida = "";
 		for (int i = 0; i < ranking.size(); i++) {
-			saida+= i+1+"บ" +" - " +ranking.get(i).getName() +" - "+ranking.get(i).getScore()+"\n";
+			saida += i + 1 + "ยบ" + " - " + ranking.get(i).getName() + " - "
+					+ ranking.get(i).getScore() + "\n";
 		}
 		return saida;
 	}

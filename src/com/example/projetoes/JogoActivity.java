@@ -84,16 +84,13 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 			} else {
 				progressCount = 0;
 				hide = false;
+				rank.CheckRanking(jogador, score);
+				Intent myIntent = new Intent(JogoActivity.this, RankingActivity.class);
+				myIntent.putExtra("GamersList", rank.toString());
+				startActivity(myIntent);
 				this.finish();
-				if(rank.CheckRanking(jogador, score)){
-					Intent myIntent = new Intent(JogoActivity.this, RankingActivity.class);
-					myIntent.putExtra("GamersList", rank.toString());
-					startActivity(myIntent);
-				}else{
-					startActivity(new Intent(getApplicationContext(), MainActivity.class));
-				}
 			}
-			baseTime.postDelayed(this, 100);
+			baseTime.postDelayed(this, 250);
 		}
 	}
 
@@ -176,8 +173,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 
 		buttonBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-				startActivityForResult(myIntent, 0);
+				finish();
 			}
 		});
 
@@ -230,7 +226,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 							score++;
 						}
 					}
-					if (operator.getText().equals("÷")) {
+					if (operator.getText().equals("ï¿½")) {
 						if (Integer.parseInt(a) / Integer.parseInt(b) == Integer
 								.parseInt(c)) {
 							score++;
@@ -267,6 +263,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
 
 				if (hide) {
+					if(!campo1.getText().toString().equals("") && !campo2.getText().toString().equals("")) return;
 					if (campo1.getText().toString().equals("")) {
 						campo1.setText("" + buttonsValues[0]);
 					} else {
@@ -287,7 +284,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
 				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
-
+				if(!campo1.getText().toString().equals("") && !campo2.getText().toString().equals("")) return;
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[1]);
@@ -309,7 +306,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
 				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
-
+				if(!campo1.getText().toString().equals("") && !campo2.getText().toString().equals("")) return;
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[2]);
@@ -330,7 +327,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
 				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
-
+				if(!campo1.getText().toString().equals("") && !campo2.getText().toString().equals("")) return;
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[3]);
@@ -351,7 +348,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
 				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
-
+				if(!campo1.getText().toString().equals("") && !campo2.getText().toString().equals("")) return;
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[4]);
@@ -372,7 +369,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 			public void onClick(View v) {
 				TextView campo1 = (TextView) findViewById(R.id.textViewOperador1);
 				TextView campo2 = (TextView) findViewById(R.id.textViewOperador2);
-
+				if(!campo1.getText().toString().equals("") && !campo2.getText().toString().equals("")) return;
 				if (hide) {
 					if (campo1.getText().toString().equals("") && hide) {
 						campo1.setText("" + buttonsValues[5]);
@@ -419,7 +416,7 @@ public class JogoActivity extends Activity implements Runnable, OnClickListener 
 			public void onClick(View v) {
 				TextView campo = (TextView) findViewById(R.id.textViewOperando);
 				if (hide) {
-					campo.setText("÷");
+					campo.setText("ï¿½");
 				}
 			}
 		});
